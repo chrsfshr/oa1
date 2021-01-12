@@ -371,7 +371,7 @@
 (function() {
   var stripe = Stripe('pk_test_51I7PDJGsFpC25p1TKx9CfNoxT0yj4T9M6LD3AxI8tlpHdpKVbCbyD1xh322nF9q3uUuDvalINAhdtLb0eVXMWhjg007VQZRqlX');
 
-  var checkoutButton = document.getElementById('checkout-button-price_1I8cATGsFpC25p1ThE8ucNKz');
+  var checkoutButton = document.getElementById('checkout-button-price_1I8rSaGsFpC25p1TExAWsCqE');
   checkoutButton.addEventListener('click', function () {
     /*
      * When the customer clicks on the button, redirect
@@ -401,7 +401,7 @@
       }
     });
   });
-  var checkoutButton2 = document.getElementById('checkout-button2-price_1I8cATGsFpC25p1ThE8ucNKz');
+  var checkoutButton2 = document.getElementById('checkout-button2-price_1I8rSaGsFpC25p1TExAWsCqE');
   checkoutButton2.addEventListener('click', function () {
     /*
      * When the customer clicks on the button, redirect
@@ -431,14 +431,14 @@
       }
     });
   });
-  var checkoutButton3 = document.getElementById('checkout-button3-price_1I8cATGsFpC25p1ThE8ucNKz');
+  var checkoutButton3 = document.getElementById('checkout-button3-price_1I8rSaGsFpC25p1TExAWsCqE');
   checkoutButton3.addEventListener('click', function () {
     /*
      * When the customer clicks on the button, redirect
      * them to Checkout.
      */
     stripe.redirectToCheckout({
-      lineItems: [{price: 'price_1I8cATGsFpC25p1ThE8ucNKz', quantity: 1}],
+      lineItems: [{price: 'price_1I8rSaGsFpC25p1TExAWsCqE', quantity: 1}],
       mode: 'payment',
       /*
        * Do not rely on the redirect to the successUrl for fulfilling
