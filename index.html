@@ -334,6 +334,61 @@
     </div>
   </footer><!-- End Footer -->
 
+  <!-- ======= Stripe ======= -->
+<!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
+<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+<button
+  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+  id="checkout-button-price_1I8cATGsFpC25p1ThE8ucNKz"
+  role="link"
+  type="button"
+>
+  Checkout
+</button>
+
+<div id="error-message"></div>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_live_51I7PDJGsFpC25p1TsYnZZH8aV8iDTGf7ebhSKINwtMPEUIdjISCfdUw4nKHauZOj3xFRYnwYuc7SVkPEr7Lt0kge00OCxvMAAV');
+
+  var checkoutButton = document.getElementById('checkout-button-price_1I8cATGsFpC25p1ThE8ucNKz');
+  checkoutButton.addEventListener('click', function () {
+    /*
+     * When the customer clicks on the button, redirect
+     * them to Checkout.
+     */
+    stripe.redirectToCheckout({
+      lineItems: [{price: 'price_1I8cATGsFpC25p1ThE8ucNKz', quantity: 1}],
+      mode: 'payment',
+      /*
+       * Do not rely on the redirect to the successUrl for fulfilling
+       * purchases, customers may not always reach the success_url after
+       * a successful payment.
+       * Instead use one of the strategies described in
+       * https://stripe.com/docs/payments/checkout/fulfill-orders
+       */
+      successUrl: 'http://oa1.org/success',
+      cancelUrl: 'http://oa1.org/',
+    })
+    .then(function (result) {
+      if (result.error) {
+        /*
+         * If `redirectToCheckout` fails due to a browser or network
+         * error, display the localized error message to your customer.
+         */
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
+  
+  <!-- End Stripe -->
+
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
   <div id="preloader"></div>
 
