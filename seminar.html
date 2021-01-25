@@ -14,6 +14,10 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +37,49 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+    <style>
+      input[type="email"] {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        display: inline-block;
+        padding: 14px 20px;
+        width: 250px;
+        border-radius: 5px;
+        color: #5e5e5e;
+        border: none;
+        margin-right: 1rem;
+      }
+
+      button {
+        padding: 14px 20px !important;
+        border: none;
+        margin-top: 0 !important;
+      }
+
+      .agreement {
+        display: none;
+      }
+
+      .no-match {
+        display: none;
+      }
+
+      /* .pass {
+        display: none;
+      } */
+
+      input[type="checkbox"] {
+        width: 10px;
+        margin-left: 1rem;
+      }
+
+      label {
+        cursor: pointer;
+      }
+    </style>
+
 </head>
 
 <body>
@@ -48,7 +95,7 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="#about">Seminar</a></li>
+          <li><a href="seminar.html">Seminar</a></li>
           <li><a href="#about">Contact</a></li>
 
         </ul>
@@ -62,18 +109,56 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
-        <div class="col-xl-7 col-lg-9 text-center">
+        <!-- <div class="col-xl-7 col-lg-9 text-center">
           <h1>We are Full!</h1>
           <h2 style="text-align: left;margin-bottom: 2rem;">In order to provide the best possible value for the seminar attendees we have closed registration for the seminar.</h2>
           <h2 style="text-align: left;margin-bottom: 2rem;">If you are interested in attending any future events or seminars please fill out this quick google form below to be notified.</h2>
           <p style="text-align: left;">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScs2LZoAChc93agLyHWrxWS_alFLirEeKyqY3UoXhnzZRrkrA/viewform?usp=sf_link" target="_blank" style="font-size: 16px;font-weight: bold;">Get notified</a>
         </p>
+        </div> -->
+
+        <div class="col-xl-7 col-lg-9 text-center reg" id="emailreg">
+          <div>
+            <h2 style="text-align: left;margin-bottom: 2rem;">Please enter the <strong>email address</strong> you used to register to get the password for the seminar.</h2>
+            <form>
+              <input type="email" name="email" id="email" placeholder="Email Address">
+              <button onclick="getEmail(event);" class="btn-get-started">Get Password</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-xl-7 col-lg-9 text-center terms">
+          <div style="margin-top: 3rem;" class="agreement animate__animated animate__fadeInUp" id="disc">
+            <div style="text-align: left;border: 1px solid #5e5e5e;color: #5e5e5e;padding: 1rem;border-radius: 5px;">
+              <h2 style="text-align: center;margin-bottom: 1rem;">Disclaimer</h2>
+              <p>The content shared during this seminar, as well as all communications during or outside of it, are for informational and educational purposes only and is not and should not be construed as professional financial, investment, tax, or legal advice. Trading in the stock market, including and especially penny stocks, futures trading, and options trading have large potential rewards but also large potential risk. You must be aware of the risks and be willing to accept them in order to invest in these products. Do not trade with money that you cannot afford to lose. The past performance of any trading system, methodology, or particular trader is not indicative of future results. All content is provided subject to the qualifications and limitations stated in the OA1.Org Legal Disclosure link, found at the bottom of the website. By clicking Enter, you agree that you have read, understand, and agree to be bound by our Terms of Service, including the mandatory arbitration of disputes.</p>
+              <p>Agree to the disclaimer below to recieve the GoToMeeting password.</p>
+              <p class="enhancements">
+                <input id="agreement" type="checkbox">
+                <label for="agreement"><strong>I agree to the OA1 Disclaimer</strong></label>
+              </p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem;" class="no-match animate__animated animate__fadeInUp" id="nomatch">
+          <div style="text-align: left;border: 1px solid #5e5e5e;color: #5e5e5e;padding: 1rem;border-radius: 5px;">
+            <h2 style="text-align: center;margin-bottom: 1rem;">Your email doesn't match our records</h2>
+            <p>Please try again, remember to enter the email you used to purchase the seminar with. If you're having trouble please contact Randy at <strong>OA1Stocks@gmail.com</strong>.</p>
+            <p>If you didn't get a chance to sign up for the seminar, please fill out this quick google form to be notified for future events. <a href="https://docs.google.com/forms/d/e/1FAIpQLScs2LZoAChc93agLyHWrxWS_alFLirEeKyqY3UoXhnzZRrkrA/viewform?usp=sf_link" target="_blank" style="font-size: 16px;font-weight: bold;">Get notified</a></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-xl-7 col-lg-9 text-center animate__animated animate__fadeInUp pass" id="pass">
+        <div>
+          <h2>GoToMeeting Password</h2>
+          <h2 style="margin-bottom: 2rem;" id="patxt"></h2>
         </div>
       </div>
-      <!-- <div class="text-center">
-        <a href="#about" class="btn-get-started scrollto">Learn more</a>
-      </div> -->
+
+
     </div>
   </section><!-- End Hero -->
 
@@ -108,6 +193,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/register.js"></script>
 
 </body>
 

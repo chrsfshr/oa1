@@ -16,6 +16,21 @@
     }
   });
 
+  // Password
+  
+  $(".pass").hide();
+  $("#agreement").click(function() {
+    if($(this).is(":checked")) {
+        $(".pass").show();
+        $(".terms").hide();
+        $(".reg").hide();
+    } else {
+        $(".pass").hide();
+        $(".reg").hide();
+        $(".terms").show();
+    }
+});
+
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $('#header').outerHeight() - 2;
   $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function(e) {
